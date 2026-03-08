@@ -1,13 +1,36 @@
 import 'package:flutter/material.dart';
 
 class HomeScree extends StatelessWidget {
-  const HomeScree({super.key});
+  HomeScree({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(body: _buildBody);
   }
 
+  final List<String> _slideRowTitle = [
+    "Academix success",
+    "Test success",
+    "Exam success",
+    "Final success",
+    "Graduation success",
+  ];
+
+  final List<IconData> _slideRowIcon = [
+    Icons.shopping_basket_outlined,
+    Icons.book,
+    Icons.bookmarks_outlined,
+    Icons.school_outlined,
+    Icons.slideshow_outlined,
+  ];
+
+  final List<Color> _slideRowColor = [
+    Colors.green,
+    Colors.blue,
+    Colors.orange,
+    Colors.purple,
+    Colors.red,
+  ];
   get _buildBody => Column(
     children: [
       SizedBox(height: 68),
@@ -17,7 +40,7 @@ class HomeScree extends StatelessWidget {
         children: [
           Container(
             margin: const EdgeInsets.all(20),
-            height: 333,
+            height: 370,
             width: double.infinity,
             decoration: BoxDecoration(
               color: const Color.fromARGB(255, 14, 66, 156),
@@ -29,12 +52,12 @@ class HomeScree extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Column(
-                  spacing: 18,
+                  spacing: 5,
                   children: [
                     Text(
                       "Voerun Lyhav",
                       style: TextStyle(
-                        fontSize: 28,
+                        fontSize: 26,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
@@ -47,7 +70,9 @@ class HomeScree extends StatelessWidget {
                         color: Colors.white54,
                       ),
                     ),
+                    SizedBox(),
                     _slideRow,
+                    _bottomCard,
                   ],
                 ),
               ],
@@ -70,34 +95,42 @@ class HomeScree extends StatelessWidget {
       ),
     ],
   );
-  get _slideRow => Row(
-    children: [
-      Container(
-        padding: EdgeInsets.all(10),
-        height: 60,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Row(
-          spacing: 10,
-          children: [
-            Container(
-              height: 60,
-              width: 40,
-              decoration: BoxDecoration(
-                color: Colors.green,
-                borderRadius: BorderRadius.circular(10),
+  get _slideRow => SingleChildScrollView(
+    padding: EdgeInsets.only(left: 10),
+    scrollDirection: Axis.horizontal,
+    child: Row(
+      children: List.generate(
+        5,
+        (index) => Container(
+          margin: EdgeInsets.only(right: 10),
+          padding: EdgeInsets.all(10),
+          height: 60,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Row(
+            spacing: 10,
+            children: [
+              Container(
+                height: 60,
+                width: 40,
+                decoration: BoxDecoration(
+                  color: _slideRowColor[index],
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Icon(_slideRowIcon[index], color: Colors.white),
               ),
-              child: Icon(Icons.slideshow),
-            ),
-            Text(
-              "Academix success",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ],
+              Text(
+                _slideRowTitle[index],
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
         ),
       ),
-    ],
+    ),
   );
+  get _bottomCard =>
+      Container(color: const Color.fromARGB(255, 8, 50, 114), height: 128);
 }
