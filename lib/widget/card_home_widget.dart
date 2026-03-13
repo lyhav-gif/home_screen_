@@ -6,14 +6,14 @@ class CardHomeWidget extends StatefulWidget {
   final String urlImage;
   final List slideRowTitle;
   final bool isUrlNetwork;
-  // final void Function(DateTime)? onDateChange;
+  final void Function(DateTime)? onDateChange;
   const CardHomeWidget({
     super.key,
     required this.name,
     required this.urlImage,
     required this.slideRowTitle,
     this.isUrlNetwork = true,
-    // this.onDateChange,
+    this.onDateChange,
    
   });
   @override

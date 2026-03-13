@@ -1,11 +1,22 @@
-import 'package:easy_date_timeline/easy_date_timeline.dart' show DayStructure, DayStyle, EasyDateTimeLine, EasyDayProps, EasyHeaderProps;
+import 'package:easy_date_timeline/easy_date_timeline.dart'
+    show
+        DayStructure,
+        DayStyle,
+        EasyDateTimeLine,
+        EasyDayProps,
+        EasyHeaderProps;
 import 'package:flutter/material.dart';
 
 class Datetimelinewidget extends StatelessWidget {
   final void Function(DateTime)? onDateChange;
   final DateTime? initialDate;
 
-  const Datetimelinewidget({super.key, this.onDateChange, this.initialDate, required Color activeColor});
+  const Datetimelinewidget({
+    super.key,
+    this.onDateChange,
+    this.initialDate,
+    required Color activeColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +35,7 @@ class Datetimelinewidget extends StatelessWidget {
         monthStyle: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.bold,
-          color: Colors.black,
+          color: Colors.white,
         ),
         showSelectedDate: false,
         showMonthPicker: false,
