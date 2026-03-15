@@ -55,7 +55,7 @@ class _CardHomeWidgetState extends State<CardHomeWidget> {
         children: [
           Container(
             margin: const EdgeInsets.all(15),
-            height: 320,
+            height: 330,
             width: double.infinity,
             decoration: BoxDecoration(
               color: const Color.fromARGB(255, 1, 49, 121),
