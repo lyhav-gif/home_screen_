@@ -14,7 +14,6 @@ class CardHomeWidget extends StatefulWidget {
     required this.slideRowTitle,
     this.isUrlNetwork = true,
     this.onDateChange,
-   
   });
   @override
   State<CardHomeWidget> createState() => _CardHomeWidgetState();
@@ -27,6 +26,7 @@ class _CardHomeWidgetState extends State<CardHomeWidget> {
     Icons.bookmarks_outlined,
     Icons.school_outlined,
     Icons.slideshow_outlined,
+    Icons.add_reaction_outlined,
   ];
 
   final List<Color> _slideRowColor = [
@@ -35,6 +35,7 @@ class _CardHomeWidgetState extends State<CardHomeWidget> {
     Colors.orange,
     Colors.purple,
     Colors.red,
+    Colors.black,
   ];
 
   final List<String> _bottomCardTitle = ["A-", "90-92", "3.7"];
@@ -47,18 +48,18 @@ class _CardHomeWidgetState extends State<CardHomeWidget> {
 
   Column get _buildCard => Column(
     children: [
-      SizedBox(height: 72),
+      SizedBox(height: 50),
       Stack(
         clipBehavior: Clip.none,
         alignment: Alignment.topCenter,
         children: [
           Container(
-            margin: const EdgeInsets.all(20),
-            height: 350,
+            margin: const EdgeInsets.all(15),
+            height: 320,
             width: double.infinity,
             decoration: BoxDecoration(
               color: const Color.fromARGB(255, 1, 49, 121),
-              borderRadius: BorderRadius.circular(35),
+              borderRadius: BorderRadius.circular(20),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -66,7 +67,7 @@ class _CardHomeWidgetState extends State<CardHomeWidget> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Column(
-                  spacing: 14,
+                  spacing: 11,
                   children: [
                     Column(
                       children: [
@@ -81,10 +82,10 @@ class _CardHomeWidgetState extends State<CardHomeWidget> {
                       ],
                     ),
                     Text(
-                      "9th Grade",
+                      "Y3 M3",
                       style: GoogleFonts.poppins(
                         color: Colors.white.withAlpha(90),
-                        fontSize: 14,
+                        fontSize: 13,
                       ),
                     ),
 
@@ -112,7 +113,7 @@ class _CardHomeWidgetState extends State<CardHomeWidget> {
                       : AssetImage(widget.urlImage),
                   fit: BoxFit.cover,
                 ),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(18),
                 border: Border.all(color: Colors.white, width: 2),
               ),
             ),
@@ -122,18 +123,18 @@ class _CardHomeWidgetState extends State<CardHomeWidget> {
     ],
   );
   SingleChildScrollView get _slideRow => SingleChildScrollView(
-    padding: EdgeInsets.only(left: 10),
+    padding: EdgeInsets.only(left: 15),
     scrollDirection: Axis.horizontal,
     child: Row(
       children: List.generate(
         widget.slideRowTitle.length,
         (index) => Container(
-          margin: EdgeInsets.only(right: 10),
+          margin: EdgeInsets.only(right: 15),
           padding: EdgeInsets.all(10),
           height: 60,
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(16),
           ),
           child: Row(
             spacing: 10,
@@ -161,7 +162,7 @@ class _CardHomeWidgetState extends State<CardHomeWidget> {
     padding: EdgeInsets.all(16),
     height: 120,
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(25),
+      borderRadius: BorderRadius.circular(20),
       color: const Color.fromARGB(255, 4, 37, 87),
     ),
     child: Row(
@@ -170,7 +171,7 @@ class _CardHomeWidgetState extends State<CardHomeWidget> {
         _bottomCardSubTitle.length,
         (index) => Expanded(
           child: Container(
-            margin: EdgeInsets.only(left: 5),
+            margin: EdgeInsets.only(right: 5, left: 5, top: 2, bottom: 2),
             padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
               color: Colors.white.withAlpha(16),

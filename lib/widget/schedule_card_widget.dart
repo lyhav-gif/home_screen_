@@ -62,11 +62,11 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget>
             ),
           ),
           child: Container(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(12),
             margin: EdgeInsets.only(bottom: 10),
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(28),
+              borderRadius: BorderRadius.circular(26),
               border: Border.all(
                 color: Color.fromARGB(255, 3, 42, 74).withValues(alpha: 0.2),
                 width: 2,
@@ -125,7 +125,7 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget>
   }
 
   Widget _progressIndicator(String text) {
-    List durationValue = [0.5, 0.3, 0.2, 0.1, 1, 0.2];
+    List durationValue = [0.6];
     return Column(
       children: [
         Stack(
