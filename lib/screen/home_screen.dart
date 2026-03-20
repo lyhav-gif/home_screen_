@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:home_screen_/screen/subject_detail.dart';
 import 'package:home_screen_/widget/DateTimeLineWidget.dart';
 import 'package:home_screen_/widget/card_home_widget.dart';
 import 'package:home_screen_/widget/schedule_card_widget.dart';
@@ -11,10 +12,31 @@ class HomeScree extends StatefulWidget {
 }
 
 class _HomeScreeState extends State<HomeScree> {
+  int currentIndex = 0;
+  DateTime selectDate = DateTime.now();
+
+  void onChangeDate(DateTime dateValue) {
+    setState(() {
+      selectDate = dateValue;
+    });
+  }
+
+  void bottomNavigationBarTap(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
+
+  get screen => [
+    _buildBodyHome,
+    Container(color: Colors.red),
+    Container(color: Colors.blue),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _buildBody,
+      body: screen[currentIndex],
       bottomNavigationBar: _buildBottomNavigationBar,
     );
   }
@@ -28,15 +50,7 @@ class _HomeScreeState extends State<HomeScree> {
     "Voeurn Lyhav",
   ];
 
-  DateTime selectDate = DateTime.now();
-
-  void onChangeDate(DateTime dateValue) {
-    setState(() {
-      selectDate = dateValue;
-    });
-  }
-
-  Column get _buildBody {
+  Column get _buildBodyHome {
     return Column(
       children: [
         CardHomeWidget(
@@ -383,7 +397,21 @@ class _HomeScreeState extends State<HomeScree> {
             subject: selectedSchedule[index]["subject"]!,
             teacher: selectedSchedule[index]["teacher"]!,
             duration: selectedSchedule[index]["duration"]!,
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SubjectDetailScreen(
+                    index: index,
+                    titleName: selectedSchedule[index]["subject"]!,
+                    time: selectedSchedule[index]["time"]!,
+                    teacher: selectedSchedule[index]["teacher"]!,
+                    duration: selectedSchedule[index]["duration"]!,
+                    date: dateKey,
+                  ),
+                ),
+              );
+            },
           );
         },
       ),
@@ -395,8 +423,16 @@ class _HomeScreeState extends State<HomeScree> {
       BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label: ''),
       BottomNavigationBarItem(icon: Icon(Icons.add_box_outlined), label: ''),
       BottomNavigationBarItem(icon: Icon(Icons.account_box_sharp), label: ''),
-      // BottomNavigationBarItem(icon: Icon(Icons.padding), label: ''),
+      // BottomNavigationBarItem(icon: Icon(Icons.access_time), label: ''),
     ];
-    return BottomNavigationBar(items: item);
+    return BottomNavigationBar(
+      backgroundColor: const Color.fromARGB(255, 1, 49, 121),
+      fixedColor: Colors.white,
+      currentIndex: currentIndex,
+      items: item,
+      onTap: (index) {
+        bottomNavigationBarTap(index);
+      },
+    );
   }
 }
